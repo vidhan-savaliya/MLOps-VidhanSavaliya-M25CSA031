@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Vidhan Savaliya — DLOps Portfolio</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <style>
+            :root{--bg:#0f1724;--card:#111827;--muted:#9aa4b2;--accent:#6ee7b7;--border:rgba(255,255,255,0.08)}
+            html,body{height:100%;margin:0;font-family:Inter,sans-serif;background:linear-gradient(180deg,#071029 0%,#0b1220 100%);color:#e6eef6}
+            .container{max-width:960px;margin:40px auto;padding:20px}
+            .main-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid var(--border);padding:32px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,0.4)}
+            
+            /* Header */
+            .hero{display:flex;gap:24px;align-items:center;margin-bottom:40px;padding-bottom:30px;border-bottom:1px solid var(--border)}
+            .avatar{width:80px;height:80px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#3b82f6);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:#0f1724}
+            h1{margin:0;font-size:26px;font-weight:700}
+            .role{color:var(--accent);font-weight:600;margin-top:4px}
+            .meta{color:var(--muted);margin-top:4px;font-size:14px}
+
+            /* Layout */
+            .grid{display:grid;grid-template-columns:1fr 260px;gap:40px}
+            
+            /* Assignments */
+            .timeline{display:flex;flex-direction:column;gap:24px}
+            .assignment-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
+            
+            .card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+            .tag{padding:4px 10px;background:rgba(110,231,183,0.1);color:var(--accent);border-radius:99px;font-size:11px;font-weight:600;text-transform:uppercase}
+            .date{font-size:13px;color:var(--muted)}
+            
+            h2{margin:0 0 8px 0;font-size:18px}
+            p{margin:0;line-height:1.6;color:var(--muted);font-size:14px}
+            
+            .actions{margin-top:20px;display:flex;gap:12px}
+            a.btn{display:inline-flex;align-items:center;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:background 0.2s}
+            a.btn-primary{background:var(--accent);color:#064e3b}
+            a.btn-primary:hover{background:#34d399}
+            a.btn-outline{background:transparent;border:1px solid var(--border);color:#fff}
+            a.btn-outline:hover{background:rgba(255,255,255,0.05);border-color:#fff}
+
+            /* Simplified Sidebar */
+            .sidebar-title{font-size:12px;text-transform:uppercase;color:var(--muted);letter-spacing:1px;margin-bottom:16px;font-weight:700}
+            .contact-info{font-size:14px;color:var(--muted);line-height:1.6}
+            .contact-info a{color:#e6eef6;text-decoration:none;border-bottom:1px solid var(--border)}
+            .contact-info a:hover{border-color:var(--accent);color:var(--accent)}
+
+            @media(max-width:800px){.grid{grid-template-columns:1fr}.hero{flex-direction:column;text-align:center}}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="main-card">
+                
+                <div class="hero">
+                    <div class="avatar">VS</div>
+                    <div>
+                        <h1>Vidhan Savaliya</h1>
+                        <div class="role">M.Tech AI • M25CSA031</div>
+                        <div class="meta">IIT Jodhpur • DLOps</div>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <main>
+                        <div class="sidebar-title">Assignments</div>
+                        <div class="timeline">
+                            
+                        
+
+                            <div class="assignment-card">
+                                <div class="card-header">
+                                    <span class="tag">Assignment 1</span>
+                                    <span class="date">Jan 2026</span>
+                                </div>
+                                <h2>Experiments on MNIST & FashionMNIST Datasets</h2>
+                                <p>Implementation of ResNet-18 on MNIST/FashionMNIST from scratch. Compared SGD vs Adam optimizers and analyzed performance against SVM baselines.</p>
+                                <div class="actions">
+                                    <a href="https://github.com/vidhan-savaliya/MLOps-VidhanSavaliya-M25CSA031/blob/Assignment-1/M25CSA031_Vidhan_Savaliya_Ass1.pdf" class="btn btn-primary">View Report</a>
+                                    <a href="https://github.com/vidhan-savaliya/MLOps-VidhanSavaliya-M25CSA031/blob/Assignment-1/M25CSA031_Vidhan_Savaliya_Ass1.ipynb" class="btn btn-outline">Code / Repo</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </main>
+
+                    <aside>
+                        <div style="margin-bottom:32px">
+                            <div class="sidebar-title">Student Info</div>
+                            <div class="contact-info">
+                                <strong>Vidhan Savaliya</strong><br>
+                                Roll: M25CSA031<br>
+                                <a href="mailto:vidhan.savaliya@iitj.ac.in">m25csa031@iitj.ac.in</a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="sidebar-title">Links</div>
+                            <div class="contact-info">
+                                <ul style="padding-left:16px;margin:0">
+                                    <li><a href="GITHUB_PROFILE_LINK" target="_blank">GitHub Profile</a></li>
+                                    <li style="margin-top:8px"><a href="LINKEDIN_LINK" target="_blank">LinkedIn</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
