@@ -1,0 +1,22 @@
+============================================================
+BEST MNIST MODEL INFORMATION
+============================================================
+run_id: 1
+dataset: MNIST
+model: ResNet-18
+batch_size: 16
+optimizer: SGD
+lr: 0.001
+pin_memory: False
+epochs: 6
+amp_enabled: True
+pretrained: False
+train_time_sec: 324.59
+best_val_acc: 99.23
+test_acc: 99.15
+test_precision: 0.9915
+test_recall: 0.9915
+test_f1: 0.9915
+total_params: 11181642
+trainable_params: 11181642
+============================================================
