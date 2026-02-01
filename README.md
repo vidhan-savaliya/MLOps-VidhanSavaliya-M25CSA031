@@ -40,8 +40,6 @@ All training metrics and graphs are logged to WandB.
 
 The following visualizations are available in the **Media** or **Logs** section of the dashboard:
 
-- **Confusion Matrix**: `confusion_matrix`
-- **Class-wise Accuracy**: `class_accuracy`
 - **Prediction Examples**: `prediction_examples`
 - **Gradient Flow**: `gradients`
 - **Weight Distribution**: `weights`
@@ -51,3 +49,4 @@ The following visualizations are available in the **Media** or **Logs** section 
 Vidhan Savaliya
 M25CSA031
 Indian Institute of Technology Jodhpur
+
