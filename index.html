@@ -4,110 +4,448 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <title>Vidhan Savaliya — DLOps Portfolio</title>
+        <meta name="description" content="MLOps Portfolio of Vidhan Savaliya (M25CSA031), IIT Jodhpur">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+        <!-- Icons -->
+        <script src="https://unpkg.com/lucide@latest"></script>
         <style>
-            :root{--bg:#0f1724;--card:#111827;--muted:#9aa4b2;--accent:#6ee7b7;--border:rgba(255,255,255,0.08)}
-            html,body{height:100%;margin:0;font-family:Inter,sans-serif;background:linear-gradient(180deg,#071029 0%,#0b1220 100%);color:#e6eef6}
-            .container{max-width:960px;margin:40px auto;padding:20px}
-            .main-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid var(--border);padding:32px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,0.4)}
+            :root {
+                --bg: #0f172a;
+                --card-bg: #1e293b;
+                --card-border: rgba(148, 163, 184, 0.1);
+                --text-main: #f8fafc;
+                --text-muted: #94a3b8;
+                --accent: #38bdf8; /* Sky blue for tech */
+                --accent-glow: rgba(56, 189, 248, 0.15);
+                --success: #34d399;
+                --gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            }
+
+            * { box-sizing: border-box; }
+
+            body {
+                margin: 0;
+                font-family: 'Inter', sans-serif;
+                background: var(--bg);
+                color: var(--text-main);
+                line-height: 1.6;
+                overflow-x: hidden;
+            }
+
+            /* Utilities */
+            .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+            .badge { 
+                display: inline-flex; align-items: center; gap: 6px;
+                padding: 4px 10px; border-radius: 99px; 
+                font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+            }
+            .badge-accent { background: var(--accent-glow); color: var(--accent); border: 1px solid rgba(56, 189, 248, 0.2); }
+            .badge-outline { border: 1px solid var(--card-border); color: var(--text-muted); }
+            .hidden-mobile { display: inline-block; }
+            @media(max-width: 600px) { .hidden-mobile { display: none; } }
             
             /* Header */
-            .hero{display:flex;gap:24px;align-items:center;margin-bottom:40px;padding-bottom:30px;border-bottom:1px solid var(--border)}
-            .avatar{width:80px;height:80px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#3b82f6);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:#0f1724}
-            h1{margin:0;font-size:26px;font-weight:700}
-            .role{color:var(--accent);font-weight:600;margin-top:4px}
-            .meta{color:var(--muted);margin-top:4px;font-size:14px}
+            header {
+                display: flex; gap: 32px; align-items: center; margin-bottom: 60px;
+                padding-bottom: 40px; border-bottom: 1px solid var(--card-border);
+            }
+            .avatar {
+                width: 100px; height: 100px; border-radius: 20px;
+                background: linear-gradient(135deg, #3b82f6, #06b6d4);
+                display: flex; align-items: center; justify-content: center;
+                font-size: 32px; font-weight: 700; color: white;
+                box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+                flex-shrink: 0;
+            }
+            .header-content h1 { margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -0.5px; }
+            .role { color: var(--accent); font-weight: 500; margin: 8px 0 4px; display: flex; align-items: center; gap: 8px; }
+            .meta { color: var(--text-muted); font-size: 14px; display: flex; gap: 16px; margin-top: 8px; flex-wrap: wrap; }
 
-            /* Layout */
-            .grid{display:grid;grid-template-columns:1fr 260px;gap:40px}
-            
+            /* Grid Layout */
+            .grid { display: grid; grid-template-columns: 1fr 280px; gap: 48px; }
+            @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } header { flex-direction: column; text-align: center; } .meta { justify-content: center; } }
+
             /* Assignments */
-            .timeline{display:flex;flex-direction:column;gap:24px}
-            .assignment-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
-            
-            .card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
-            .tag{padding:4px 10px;background:rgba(110,231,183,0.1);color:var(--accent);border-radius:99px;font-size:11px;font-weight:600;text-transform:uppercase}
-            .date{font-size:13px;color:var(--muted)}
-            
-            h2{margin:0 0 8px 0;font-size:18px}
-            p{margin:0;line-height:1.6;color:var(--muted);font-size:14px}
-            
-            .actions{margin-top:20px;display:flex;gap:12px}
-            a.btn{display:inline-flex;align-items:center;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:background 0.2s}
-            a.btn-primary{background:var(--accent);color:#064e3b}
-            a.btn-primary:hover{background:#34d399}
-            a.btn-outline{background:transparent;border:1px solid var(--border);color:#fff}
-            a.btn-outline:hover{background:rgba(255,255,255,0.05);border-color:#fff}
+            .section-title {
+                font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px;
+                color: var(--text-muted); font-weight: 700; margin-bottom: 24px;
+                display: flex; align-items: center; gap: 12px;
+            }
+            .section-title::after { content: ""; height: 1px; background: var(--card-border); flex: 1; }
 
-            /* Simplified Sidebar */
-            .sidebar-title{font-size:12px;text-transform:uppercase;color:var(--muted);letter-spacing:1px;margin-bottom:16px;font-weight:700}
-            .contact-info{font-size:14px;color:var(--muted);line-height:1.6}
-            .contact-info a{color:#e6eef6;text-decoration:none;border-bottom:1px solid var(--border)}
-            .contact-info a:hover{border-color:var(--accent);color:var(--accent)}
+            .card {
+                background: var(--card-bg); border: 1px solid var(--card-border);
+                border-radius: 16px; overflow: hidden; margin-bottom: 40px;
+                box-shadow: 0 10px 40px -10px rgba(0,0,0,0.3);
+            }
 
-            @media(max-width:800px){.grid{grid-template-columns:1fr}.hero{flex-direction:column;text-align:center}}
+            .card-header { padding: 32px; border-bottom: 1px solid var(--card-border); position: relative; }
+            .card-header h2 { margin: 12px 0; font-size: 24px; font-weight: 700; }
+            .card-header p { color: var(--text-muted); margin: 0; max-width: 600px; font-size: 15px; }
+            
+            .status-bar {
+                display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;
+            }
+            .date { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); }
+
+            /* Detailed Content */
+            .card-body { padding: 0; }
+            
+            .task-section { 
+                padding: 32px; 
+                border-bottom: 1px solid var(--card-border);
+            }
+            .task-section:last-child { border-bottom: none; }
+            
+            .task-title {
+                display: flex; align-items: center; gap: 12px;
+                font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 16px;
+            }
+            .task-title span { color: var(--text-muted); font-weight: 400; font-size: 14px; margin-left: auto; }
+            .task-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
+
+            /* Tables */
+            .table-wrapper {
+                overflow-x: auto;
+                border-radius: 8px;
+                border: 1px solid var(--card-border);
+                background: var(--bg);
+                margin-top: 16px;
+                box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+            }
+            .table-label {
+                font-size: 12px; font-weight: 700; color: var(--accent); 
+                text-transform: uppercase; margin-bottom: 8px; margin-top: 24px;
+                letter-spacing: 1px;
+            }
+            
+            table { width: 100%; border-collapse: collapse; font-size: 13px; white-space: nowrap; }
+            th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--card-border); }
+            th { 
+                background: #162032; 
+                color: var(--text-muted); 
+                font-weight: 600; 
+                font-size: 11px; 
+                text-transform: uppercase; 
+                position: sticky; top: 0;
+            }
+            tr:last-child td { border-bottom: none; }
+            td { color: var(--text-main); font-family: 'JetBrains Mono', monospace; }
+            tr:hover td { background: rgba(56, 189, 248, 0.05); }
+
+            .sub-header { background: rgba(56, 189, 248, 0.05); color: var(--accent); font-weight: 700; }
+
+            /* Sidebar */
+            .sidebar-widget { margin-bottom: 40px; }
+            .link-list { list-style: none; padding: 0; margin: 0; }
+            .link-list li { margin-bottom: 12px; }
+            .link-list a {
+                display: flex; align-items: center; gap: 10px;
+                color: var(--text-muted); text-decoration: none;
+                transition: 0.2s; font-size: 14px;
+            }
+            .link-list a:hover { color: var(--accent); transform: translateX(4px); }
+            .link-list i { width: 16px; }
+
+            .btn {
+                display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+                padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600;
+                text-decoration: none; transition: all 0.2s; width: 100%;
+                cursor: pointer;
+            }
+            .btn-primary { background: var(--accent); color: #0f172a; }
+            .btn-primary:hover { background: #7dd3fc; }
+            .btn-outline { background: transparent; border: 1px solid var(--card-border); color: var(--text-main); margin-top: 12px; }
+            .btn-outline:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
+            
+            .code-block {
+                background: #111827; padding: 2px 6px; border-radius: 4px; 
+                font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent);
+            }
+
         </style>
     </head>
     <body>
         <div class="container">
-            <div class="main-card">
-                
-                <div class="hero">
-                    <div class="avatar">VS</div>
-                    <div>
-                        <h1>Vidhan Savaliya</h1>
-                        <div class="role">M.Tech AI • M25CSA031</div>
-                        <div class="meta">IIT Jodhpur • DLOps</div>
+            
+            <!-- Hero Header -->
+            <header>
+                <div class="avatar">VS</div>
+                <div class="header-content">
+                    <h1>Vidhan Savaliya</h1>
+                    <div class="role">
+                        <i data-lucide="cpu" size="16"></i> M.Tech AI (M25CSA031)
+                        <span class="badge badge-accent" style="margin-left: 12px;">DLOps</span>
+                    </div>
+                    <div class="meta">
+                        <span><i data-lucide="map-pin" size="14" style="vertical-align: text-bottom"></i> IIT Jodhpur</span>
+                        <span><i data-lucide="github" size="14" style="vertical-align: text-bottom"></i> MLOps-VidhanSavaliya-M25CSA031</span>
                     </div>
                 </div>
+            </header>
 
-                <div class="grid">
-                    <main>
-                        <div class="sidebar-title">Assignments</div>
-                        <div class="timeline">
+            <div class="grid">
+                <!-- Main Feed -->
+                <main>
+                    <div class="section-title">Submissions</div>
+                    
+                    <!-- Assignment 1 Card -->
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="status-bar">
+                                <span class="badge badge-accent">Assignment 1</span>
+                                <span class="date">Jan 24, 2026</span>
+                            </div>
+                            <h2>Deep Learning & Compute Analysis</h2>
+                            <p>Analysis of ResNet architectures (18/50) and SVM on MNIST/FashionMNIST. Includes detailed comparison of optimizers (SGD/Adam), batch sizes, and hardware acceleration (CPU vs GPU).</p>
                             
-                        
+                            <div style="margin-top: 24px; display: flex; gap: 12px;">
+                                <!-- Update these hrefs with your actual paths -->
+                                <a href="./B22CS043_Firstname_Surname_Ass1.pdf" class="btn btn-primary" style="width: auto;">
+                                    <i data-lucide="file-text" size="16"></i> Read PDF Report
+                                </a>
+                                <a href="https://colab.research.google.com/" target="_blank" class="btn btn-outline" style="width: auto; margin-top:0;">
+                                    <i data-lucide="code" size="16"></i> Colab Notebook
+                                </a>
+                            </div>
+                        </div>
 
-                            <div class="assignment-card">
-                                <div class="card-header">
-                                    <span class="tag">Assignment 1</span>
-                                    <span class="date">Jan 2026</span>
+                        <div class="card-body">
+                            
+                            <!-- Q1(a) Section -->
+                            <div class="task-section">
+                                <div class="task-title">
+                                    <i data-lucide="bar-chart-2" class="task-icon"></i>
+                                    Q1(a). Hyperparameter Tuning
+                                    <span>ResNet-18 & 50</span>
                                 </div>
-                                <h2>Experiments on MNIST & FashionMNIST Datasets</h2>
-                                <p>Implementation of ResNet-18 on MNIST/FashionMNIST from scratch. Compared SGD vs Adam optimizers and analyzed performance against SVM baselines.</p>
-                                <div class="actions">
-                                    <a href="https://github.com/vidhan-savaliya/MLOps-VidhanSavaliya-M25CSA031/blob/Assignment-1/M25CSA031_Vidhan_Savaliya_Ass1.pdf" class="btn btn-primary">View Report</a>
-                                    <a href="https://github.com/vidhan-savaliya/MLOps-VidhanSavaliya-M25CSA031/blob/Assignment-1/M25CSA031_Vidhan_Savaliya_Ass1.ipynb" class="btn btn-outline">Code / Repo</a>
+                                <div class="task-desc">
+                                    Training ResNet-18 and ResNet-50 from scratch (pretrained=False) on MNIST/FashionMNIST. 
+                                    Split: 70-10-20. Constant factors: <span class="code-block">USE_AMP=True</span>, <span class="code-block">pin_memory=True</span>.
+                                    Target accuracy: >80%.
+                                </div>
+                                
+                                <!-- MNIST Table -->
+                                <div class="table-label">Dataset: MNIST</div>
+                                <div class="table-wrapper">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Batch Size</th>
+                                                <th>Optimizers</th>
+                                                <th>Learning Rate</th>
+                                                <th>ResNet-18 (Acc %)</th>
+                                                <th>ResNet-50 (Acc %)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>16</td><td>SGD</td><td>0.001</td><td>99.06 %</td><td>98.78 %</td></tr>
+                                            <tr><td>16</td><td>SGD</td><td>0.0001</td><td>98.53 %</td><td>97.72 %</td></tr>
+                                            <tr><td>16</td><td>Adam</td><td>0.001</td><td>98.76 %</td><td>98.47 %</td></tr>
+                                            <tr><td>16</td><td>Adam</td><td>0.0001</td><td>98.86 %</td><td>98.00 %</td></tr>
+                                            <tr><td>32</td><td>SGD</td><td>0.001</td><td>98.98 %</td><td>98.59 %</td></tr>
+                                            <tr><td>32</td><td>SGD</td><td>0.0001</td><td>97.85 %</td><td>96.94 %</td></tr>
+                                            <tr><td>32</td><td>Adam</td><td>0.001</td><td>98.96 %</td><td>98.20 %</td></tr>
+                                            <tr><td>32</td><td>Adam</td><td>0.0001</td><td>98.51 %</td><td>97.20 %</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- FashionMNIST Table -->
+                                <div class="table-label">Dataset: FashionMNIST</div>
+                                <div class="table-wrapper">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Batch Size</th>
+                                                <th>Optimizers</th>
+                                                <th>Learning Rate</th>
+                                                <th>ResNet-18 (Acc %)</th>
+                                                <th>ResNet-50 (Acc %)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>16</td><td>SGD</td><td>0.001</td><td>90.11 %</td><td>88.79 %</td></tr>
+                                            <tr><td>16</td><td>SGD</td><td>0.0001</td><td>88.76 %</td><td>85.25 %</td></tr>
+                                            <tr><td>16</td><td>Adam</td><td>0.001</td><td>90.67 %</td><td>88.15 %</td></tr>
+                                            <tr><td>16</td><td>Adam</td><td>0.0001</td><td>89.76 %</td><td>87.25 %</td></tr>
+                                            <tr><td>32</td><td>SGD</td><td>0.001</td><td>89.99 %</td><td>88.85 %</td></tr>
+                                            <tr><td>32</td><td>SGD</td><td>0.0001</td><td>87.59 %</td><td>83.81 %</td></tr>
+                                            <tr><td>32</td><td>Adam</td><td>0.001</td><td>89.95 %</td><td>84.78 %</td></tr>
+                                            <tr><td>32</td><td>Adam</td><td>0.0001</td><td>89.10 %</td><td>86.66 %</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Q1(b) Section -->
+                            <div class="task-section">
+                                <div class="task-title">
+                                    <i data-lucide="target" class="task-icon"></i>
+                                    Q1(b). SVM Classifier
+                                    <span>Classical ML</span>
+                                </div>
+                                <div class="task-desc">
+                                    Performance analysis of Support Vector Machines (SVM) with 'poly' and 'rbf' kernels.
+                                    Results shown are for the best performing hyperparameter configurations.
+                                </div>
+                                
+                                <div class="table-wrapper">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Dataset</th>
+                                                <th>Kernel</th>
+                                                <th>Test Accuracy (%)</th>
+                                                <th>Train Time (ms)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>MNIST</td>
+                                                <td>Poly (Deg 4, C=1.0)</td>
+                                                <td>95.86 %</td>
+                                                <td>6426.30 ms</td>
+                                            </tr>
+                                            <tr>
+                                                <td>MNIST</td>
+                                                <td>RBF (C=10, γ=0.001)</td>
+                                                <td>95.20 %</td>
+                                                <td>8167.06 ms</td>
+                                            </tr>
+                                            <tr>
+                                                <td>FashionMNIST</td>
+                                                <td>Poly (Deg 3, C=1.0)</td>
+                                                <td>86.48 %</td>
+                                                <td>5809.72 ms</td>
+                                            </tr>
+                                            <tr>
+                                                <td>FashionMNIST</td>
+                                                <td>RBF (C=10.0)</td>
+                                                <td>86.51 %</td>
+                                                <td>8156.18 ms</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Q2 Section -->
+                            <div class="task-section">
+                                <div class="task-title">
+                                    <i data-lucide="zap" class="task-icon"></i>
+                                    Q2. Compute Analysis
+                                    <span>CPU vs GPU</span>
+                                </div>
+                                <div class="task-desc">
+                                    Benchmarking FashionMNIST training on different hardware. Measuring Training Time, FLOPs, and Accuracy.
+                                    Comparing ResNet-18 vs ResNet-50.
+                                </div>
+                                
+                                <div class="table-wrapper">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Hardware</th>
+                                                <th>Batch</th>
+                                                <th>Optim</th>
+                                                <th>LR</th>
+                                                <th>ResNet-18<br><span style="font-size:10px; opacity:0.7">Acc / Time / FLOPs</span></th>
+                                                <th>ResNet-50<br><span style="font-size:10px; opacity:0.7">Acc / Time / FLOPs</span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="sub-header">CPU</td>
+                                                <td>16</td>
+                                                <td>SGD</td>
+                                                <td>0.001</td>
+                                                <td>89.86% / 3038957ms / 66.11M</td>
+                                                <td>86.77% / 5482543ms / 156.30M</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="sub-header">CPU</td>
+                                                <td>16</td>
+                                                <td>Adam</td>
+                                                <td>0.001</td>
+                                                <td>89.95% / 3659143ms / 66.11M</td>
+                                                <td>87.27% / 6603654ms / 156.30M</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="sub-header">GPU</td>
+                                                <td>16</td>
+                                                <td>SGD</td>
+                                                <td>0.001</td>
+                                                <td>89.78% / 240042ms / 66.11M</td>
+                                                <td>87.14% / 487784ms / 156.30M</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="sub-header">GPU</td>
+                                                <td>16</td>
+                                                <td>Adam</td>
+                                                <td>0.001</td>
+                                                <td>90.07% / 270296ms / 66.11M</td>
+                                                <td>86.57% / 559413ms / 156.30M</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
 
                         </div>
-                    </main>
+                    </article>
 
-                    <aside>
-                        <div style="margin-bottom:32px">
-                            <div class="sidebar-title">Student Info</div>
-                            <div class="contact-info">
-                                <strong>Vidhan Savaliya</strong><br>
-                                Roll: M25CSA031<br>
-                                <a href="mailto:vidhan.savaliya@iitj.ac.in">m25csa031@iitj.ac.in</a>
+                    <!-- Future Assignments Placeholder -->
+                    <div style="text-align: center; color: var(--text-muted); padding: 40px; border: 2px dashed var(--card-border); border-radius: 16px;">
+                        <i data-lucide="clock" style="opacity: 0.5; margin-bottom: 8px;"></i>
+                        <p>Assignment 2 Coming Soon</p>
+                    </div>
+
+                </main>
+
+                <!-- Sidebar -->
+                <aside>
+                    <div class="sidebar-widget">
+                        <div class="section-title">Student Info</div>
+                        <div style="background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--card-border);">
+                            <div style="font-weight: 600; margin-bottom: 4px;">Vidhan Savaliya</div>
+                            <div style="font-size: 13px; color: var(--text-muted); font-family: 'JetBrains Mono'">M25CSA031</div>
+                            <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--card-border);">
+                                <a href="mailto:m25csa031@iitj.ac.in" style="color: var(--accent); text-decoration: none; font-size: 13px; display: flex; align-items: center; gap: 8px;">
+                                    <i data-lucide="mail" size="14"></i> Email Student
+                                </a>
                             </div>
                         </div>
+                    </div>
 
-                        <div>
-                            <div class="sidebar-title">Links</div>
-                            <div class="contact-info">
-                                <ul style="padding-left:16px;margin:0">
-                                    <li><a href="GITHUB_PROFILE_LINK" target="_blank">GitHub Profile</a></li>
-                                    <li style="margin-top:8px"><a href="LINKEDIN_LINK" target="_blank">LinkedIn</a></li>
-                                </ul>
-                            </div>
+                    <div class="sidebar-widget">
+                        <div class="section-title">Quick Links</div>
+                        <ul class="link-list">
+                            <li><a href="#"><i data-lucide="github"></i> GitHub Profile</a></li>
+                            <li><a href="#"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+                            <li><a href="#"><i data-lucide="book-open"></i> IIT Jodhpur</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <div class="section-title">Tech Stack</div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span class="badge badge-outline">PyTorch</span>
+                            <span class="badge badge-outline">Python</span>
+                            <span class="badge badge-outline">ResNet</span>
+                            <span class="badge badge-outline">SVM</span>
+                            <span class="badge badge-outline">CUDA</span>
                         </div>
-                    </aside>
-                </div>
+                    </div>
+                </aside>
             </div>
         </div>
+
+        <!-- Initialize Icons -->
+        <script>
+            lucide.createIcons();
+        </script>
     </body>
 </html>
