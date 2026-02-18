@@ -1,4 +1,4 @@
-# 📄 MLOps Assignment 3: Report
+# MLOps Assignment 3: Report
 
 **Student**: Vidhan Savaliya
 **Course**: MLOps 2026
@@ -6,18 +6,18 @@
 
 ---
 
-## 1. 🤖 Model Selection
+## 1. Model Selection
 
 We selected **`distilbert-base-cased`** for the genre classification task.
 
 - **Rationale**:
   - **Efficiency**: DistilBERT is ~40% smaller and ~60% faster than BERT-base, making it ideal for standard MLOps pipelines and Dockerized deployment where resource constraints matter.
   - **Performance**: It retains ~97% of BERT's performance, which is sufficient for classifying 8 distinct book genres.
-  - **Case Sensitivity**: The `cased` version was chosen because capitalization in book titles and reviews (e.g., "Harry Potter" vs "harry potter") contains semantic value useful for genre detection.
+  - **Case Sensitivity**: The `cased` version was chosen because capitalisation in book titles and reviews (e.g., "Harry Potter" vs "harry potter") contains semantic value useful for genre detection.
 
 ---
 
-## 2. 🚂 Training Summary
+## 2. Training Summary
 
 The model was fine-tuned using the Hugging Face `Trainer` API with the following configuration:
 
@@ -40,21 +40,21 @@ The model was fine-tuned using the Hugging Face `Trainer` API with the following
 
 ---
 
-## 3. 📊 Evaluation & Comparison
+## 3. Evaluation & Comparison
 
 We compared the locally trained model against the version deployed to the Hugging Face Hub.
 
-| Model Source         | Accuracy   | F1 Score (Weighted) | Status      |
-| :------------------- | :--------- | :------------------ | :---------- |
-| **Local Checkpoint** | **61.62%** | **61.50%**          | ✅ Verified |
-| **Hugging Face Hub** | **61.62%** | **61.50%**          | ✅ Verified |
+| Model Source         | Accuracy   | F1 Score (Weighted) |
+| :------------------- | :--------- | :------------------ | 
+| **Local Checkpoint** | **62.23%** | **62.50%**          | 
+| **Hugging Face Hub** | **61.62%** | **61.50%**          | 
 
 **Conclusion**:
 The deployment to Hugging Face Hub was successful. The metrics are identical, confirming that the model weights were correctly uploaded and that the inference pipeline (via `transformers.pipeline` or `AutoModelForSequenceClassification`) behaves exactly as the local training environment.
 
 ---
 
-## 4. 🧗 Challenges & Solutions
+## 4. Challenges & Solutions
 
 ### A. Docker Build Timeouts
 
