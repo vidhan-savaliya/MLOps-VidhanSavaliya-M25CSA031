@@ -1,0 +1,21 @@
+FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV WANDB_DISABLED=true
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install --upgrade pip \
+    && pip install --no-cache-dir -r requirements.txt
+
+# Copy source code
+COPY src/ ./src/
+
+# Set the default model ID to your specific repo
+ENV HF_MODEL_ID="Vidhansavaliya123/distilbert-goodreads-genres"
+
+# Run evaluation automatically on startup
+CMD ["sh", "-c", "python -m src.evaluate --model-from-hub ${HF_MODEL_ID}"]

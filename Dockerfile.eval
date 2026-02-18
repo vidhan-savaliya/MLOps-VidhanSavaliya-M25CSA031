@@ -1,0 +1,21 @@
+FROM python:3.9-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV WANDB_DISABLED=true
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install --upgrade pip \
+    && pip install --no-cache-dir -r requirements.txt
+
+COPY src/evaluate.py ./src/evaluate.py
+COPY src/data.py ./src/data.py
+COPY src/model.py ./src/model.py
+COPY src/utils.py ./src/utils.py
+
+ENV HF_MODEL_ID="your-username/your-model"
+
+CMD ["sh", "-c", "python src/evaluate.py --model-from-hub ${HF_MODEL_ID}"]
