@@ -1,0 +1,14 @@
+vidhan@vidhan:/mnt/c/WINDOWS/system32$ docker build -t MLopsexam: Exam
+[+] Building 0.0s (0/0)                                                                                  docker:default
+ERROR: failed to build: invalid tag "MLopsexam:": invalid reference format
+vidhan@vidhan:/mnt/c/WINDOWS/system32$
+PLease help me to find error for this
+
+2:
+vidhan@vidhan:/mnt/d/MLops exam$ docker build -t mlopsexam:exam .
+[+] Building 0.2s (1/1) FINISHED                                                                         docker:default
+ => [internal] load build definition from Dockerfile                                                               0.1s
+ => => transferring dockerfile: 2B                                                                                 0.0s
+ERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+vidhan@vidhan:/mnt/d/MLops exam$
+error occuring in this
