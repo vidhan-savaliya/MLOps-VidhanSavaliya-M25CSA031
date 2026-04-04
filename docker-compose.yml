@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  train:
+    build: .
+    runtime: nvidia
+    environment:
+      - WANDB_API_KEY=${WANDB_API_KEY}
+      - HF_TOKEN=${HF_TOKEN}
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - .:/workspace
+      - ./data:/workspace/data
+      - ./weights:/workspace/weights
+    shm_size: '16gb'
+    working_dir: /workspace
