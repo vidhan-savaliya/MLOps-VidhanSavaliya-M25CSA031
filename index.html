@@ -10,12 +10,14 @@
         :root {
             --bg-color: #0d1117;
             --surface-color: #161b22;
+            --surface-color-light: #21262d;
             --text-primary: #c9d1d9;
             --text-secondary: #8b949e;
             --accent-primary: #58a6ff;
             --accent-gradient: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
             --border-color: #30363d;
             --card-hover: #1f242c;
+            --sidebar-width: 340px;
         }
 
         * {
@@ -30,6 +32,8 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            display: flex;
+            min-height: 100vh;
         }
 
         /* Typography */
@@ -40,23 +44,24 @@
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
             background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
         }
 
         h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         h3 {
-            font-size: 1.5rem;
-            color: var(--accent-primary);
+            font-size: 1.3rem;
+            color: #ffffff;
         }
 
         a {
@@ -67,186 +72,245 @@
 
         a:hover {
             color: #bc8cff;
-            text-decoration: underline;
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
+        /* Layout */
+        .layout-wrapper {
+            display: flex;
+            width: 100%;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Header / Hero Section */
-        header {
-            padding: 6rem 0;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
             position: relative;
         }
 
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(88, 166, 255, 0.15) 0%, rgba(13, 17, 23, 0) 70%);
-            z-index: -1;
-            pointer-events: none;
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            padding: 3rem 2rem;
+            border-right: 1px solid var(--border-color);
+            background-color: var(--surface-color);
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            overflow-y: auto;
+            z-index: 10;
+        }
+
+        .profile-section {
+            text-align: left;
+        }
+        
+        .profile-section h1 {
+            font-size: 2.5rem;
         }
 
         .subtitle {
-            font-size: 1.25rem;
+            font-size: 1.05rem;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
         }
 
         .social-links {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
+            flex-direction: column;
+            gap: 0.8rem;
         }
 
         .social-btn {
             display: inline-flex;
             align-items: center;
-            padding: 0.75rem 1.5rem;
-            background: var(--surface-color);
+            padding: 0.6rem 1.2rem;
+            background: var(--bg-color);
             border: 1px solid var(--border-color);
-            border-radius: 50px;
+            border-radius: 8px;
             color: var(--text-primary);
             font-weight: 500;
             transition: all 0.3s ease;
+            font-size: 0.95rem;
         }
 
         .social-btn:hover {
-            background: var(--card-hover);
+            background: var(--surface-color-light);
             border-color: var(--accent-primary);
             transform: translateY(-2px);
-            text-decoration: none;
             color: #fff;
-            box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(88, 166, 255, 0.1);
+        }
+
+        .sidebar-section h3 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .global-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .tech-pill {
+            background: rgba(88, 166, 255, 0.1);
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            color: var(--accent-primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .tech-pill:hover {
+            background: rgba(88, 166, 255, 0.2);
+            transform: scale(1.05);
         }
 
         /* Main Content */
         main {
-            padding: 4rem 0;
+            flex: 1;
+            padding: 4rem 3rem;
+            background: radial-gradient(circle at top right, rgba(88, 166, 255, 0.05) 0%, rgba(13, 17, 23, 0) 60%);
         }
 
         .section-header {
-            text-align: center;
             margin-bottom: 3rem;
         }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
         }
 
-        /* Cards */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        /* Cards Layout */
         .card {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 2rem;
+            padding: 0;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
-            flex-direction: column;
             position: relative;
             overflow: hidden;
+            flex-wrap: wrap; /* Important for responsiveness */
         }
 
         .card::before {
             content: '';
             position: absolute;
-            top: 0;
             left: 0;
-            width: 100%;
-            height: 4px;
+            top: 0;
+            width: 4px;
+            height: 100%;
             background: var(--accent-gradient);
-            transform: scaleX(0);
-            transform-origin: left;
+            transform: scaleY(0);
+            transform-origin: top;
             transition: transform 0.4s ease;
         }
 
         .card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-            background: var(--card-hover);
+            border-color: #58a6ff44;
         }
 
         .card:hover::before {
-            transform: scaleX(1);
+            transform: scaleY(1);
+        }
+        
+        /* Two-column internal layout for cards */
+        .card-main {
+            flex: 2;
+            min-width: 300px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-sidebar {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(0, 0, 0, 0.15);
+            border-left: 1px solid var(--border-color);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .card-header {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
-        .card-title {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .card-title h3 {
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 0.3rem;
         }
 
         .badge {
-            background: rgba(88, 166, 255, 0.1);
-            color: var(--accent-primary);
-            padding: 0.25rem 0.75rem;
+            background: rgba(188, 140, 255, 0.15);
+            color: #bc8cff;
+            padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 600;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
-        .card-body {
+        .card-main p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
             flex-grow: 1;
         }
 
-        .card-body p {
-            margin-bottom: 1rem;
+        /* Metrics in card sidebar */
+        .metrics h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
             color: var(--text-secondary);
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            background: rgba(48, 54, 61, 0.5);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            padding: 0.2rem 0.6rem;
-            border-radius: 6px;
-            font-size: 0.8rem;
-        }
-
-        .metrics {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            border-left: 3px solid var(--accent-primary);
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
         }
 
         .metrics ul {
             list-style-type: none;
+            margin-bottom: 1.5rem;
         }
 
         .metrics li {
-            margin-bottom: 0.25rem;
-            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            border-left: 2px solid var(--accent-primary);
+            padding-left: 0.8rem;
+            color: var(--text-secondary);
         }
 
         .metrics strong {
             color: #fff;
+            display: block;
+            margin-bottom: 0.2rem;
         }
 
         .card-footer {
@@ -254,253 +318,274 @@
             gap: 1rem;
             flex-wrap: wrap;
             margin-top: auto;
-            border-top: 1px solid var(--border-color);
             padding-top: 1.5rem;
+            border-top: 1px solid rgba(48, 54, 61, 0.5);
         }
 
         .btn {
             background: transparent;
             color: var(--accent-primary);
-            border: 1px solid var(--accent-primary);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
             font-size: 0.9rem;
             font-weight: 500;
             transition: all 0.3s ease;
             text-align: center;
-            flex: 1;
+        }
+
+        .btn.primary {
+            border-color: var(--accent-primary);
         }
 
         .btn:hover {
-            background: var(--accent-primary);
-            color: #0d1117;
-            text-decoration: none;
-        }
-        
-        .btn-outline {
-            border-color: var(--border-color);
-            color: var(--text-primary);
-        }
-        
-        .btn-outline:hover {
-            background: var(--surface-color);
-            border-color: var(--text-primary);
+            background: var(--surface-color-light);
+            border-color: var(--accent-primary);
             color: #fff;
         }
+        
+        .btn.primary:hover {
+            background: var(--accent-primary);
+            color: #0d1117;
+        }
 
-        footer {
-            text-align: center;
-            padding: 3rem 0;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            margin-top: 3rem;
+        /* Custom scrollbar for sidebar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
         }
 
         /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .animate {
-            animation: fadeIn 0.8s ease backwards;
+            animation: fadeInRight 0.6s ease backwards;
         }
 
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
+        @media (max-width: 1024px) {
+            .layout-wrapper { flex-direction: column; }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 3rem 2rem;
+            }
+            .social-links { flex-direction: row; flex-wrap: wrap; }
+            main { padding: 3rem 2rem; }
+        }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .projects-grid { grid-template-columns: 1fr; }
-            header { padding: 4rem 0; }
+            .card-sidebar { border-left: none; border-top: 1px solid var(--border-color); }
         }
     </style>
 </head>
 <body>
 
-    <header class="animate">
-        <div class="container">
-            <h1>Vidhan Savaliya</h1>
-            <p class="subtitle">Deep Learning & MLOps Portfolio • IIT Jodhpur (M25CSA031)</p>
-            <div class="social-links">
-                <a href="https://github.com/vidhan-savaliya/MLOps-VidhanSavaliya-M25CSA031" class="social-btn">🔗 GitHub Repository</a>
-                <a href="https://www.linkedin.com/in/vidhansavaliya/" class="social-btn" target="_blank">👔 LinkedIn</a>
-                <a href="mailto:m25csa031@iitj.ac.in" class="social-btn">✉️ Email Me</a>
+    <div class="layout-wrapper">
+        <!-- Global Sidebar -->
+        <aside class="sidebar">
+            <div class="profile-section">
+                <h1>Vidhan Savaliya</h1>
+                <p class="subtitle">Deep Learning & MLOps Portfolio • IIT Jodhpur (M25CSA031)</p>
+                <div class="social-links">
+                    <a href="https://github.com/vidhan-savaliya/MLOps-VidhanSavaliya-M25CSA031" class="social-btn">🔗 GitHub Repository</a>
+                    <a href="https://www.linkedin.com/in/vidhansavaliya/" class="social-btn" target="_blank">👔 LinkedIn</a>
+                    <a href="mailto:m25csa031@iitj.ac.in" class="social-btn">✉️ Email Me</a>
+                </div>
             </div>
-        </div>
-    </header>
 
-    <main class="container">
-        <div class="section-header animate delay-1">
-            <h2>Featured Assignments & Projects</h2>
-            <p style="color: var(--text-secondary);">A systematic overview of my implementations, experiments, and research in Deep Learning operations.</p>
-        </div>
+            <div class="sidebar-section">
+                <h3>Core Tech Stack</h3>
+                <div class="global-tech-stack">
+                    <span class="tech-pill">PyTorch</span>
+                    <span class="tech-pill">Transformers</span>
+                    <span class="tech-pill">PEFT / LoRA</span>
+                    <span class="tech-pill">Docker</span>
+                    <span class="tech-pill">WandB</span>
+                    <span class="tech-pill">Optuna</span>
+                    <span class="tech-pill">Ray Tune</span>
+                    <span class="tech-pill">HuggingFace</span>
+                    <span class="tech-pill">IBM ART</span>
+                    <span class="tech-pill">Scikit-Learn</span>
+                </div>
+            </div>
 
-        <div class="projects-grid">
-            
-            <!-- Assignment 5 -->
-            <article class="card animate delay-2">
-                <div class="card-header">
-                    <div class="card-title">
-                        <h3>ViT LoRA & Adversarial Attacks</h3>
-                        <span class="badge">Assignment 5</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <p>A comprehensive study on fine-tuning Vision Transformers (ViT-S) using PEFT (LoRA) on CIFAR-100, alongside implementing powerful adversarial attacks (FGSM, PGD, BIM) using the IBM Adversarial Robustness Toolbox on ResNet-18.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">PyTorch</span>
-                        <span class="tech-tag">Transformers</span>
-                        <span class="tech-tag">PEFT/LoRA</span>
-                        <span class="tech-tag">Optuna</span>
-                        <span class="tech-tag">IBM ART</span>
-                        <span class="tech-tag">WandB</span>
-                    </div>
-                    <div class="metrics">
-                        <ul>
-                            <li><strong>Best LoRA (r=4, α=4):</strong> 90.88% Acc (Baseline 78.12%)</li>
-                            <li><strong>Clean ResNet-18:</strong> 93.79% Acc on CIFAR-10</li>
-                            <li><strong>FGSM Drop (ε=0.03):</strong> Accuracy fell to 49.34%</li>
-                            <li><strong>Adversarial Detectors:</strong> ≥ 70% detection accuracy</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <a href="https://github.com/vidhan-savaliya/MLOps-VidhanSavaliya-M25CSA031/tree/Assignment-5" class="btn">View Source</a>
-                    <a href="https://wandb.ai/vidhan-savaliya-indian-institute-of-technology-jodhpur/dlops-ass5-q1/overview" class="btn btn-outline" target="_blank">WandB Q1</a>
-                    <a href="https://huggingface.co/Vidhansavaliya123" class="btn btn-outline" target="_blank">🤗 HuggingFace</a>
-                </div>
-            </article>
+            <div class="sidebar-section" style="margin-top: auto; padding-top: 2rem; text-align: center; border-bottom: none; opacity: 0.7;">
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">&copy; 2026 Vidhan Savaliya.<br>Powered by Deep Learning.</p>
+            </div>
+        </aside>
 
-            <!-- Assignment 4 -->
-            <article class="card animate delay-3">
-                <div class="card-header">
-                    <div class="card-title">
-                        <h3>Neural Machine Translation</h4>
-                        <span class="badge">Assignment 4</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <p>Optimizing an English to Hindi PyTorch Transformer model. Leveraged massive hyperparameter sweeps with Ray Tune and Optuna to significantly reduce training time while improving translation quality.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">PyTorch</span>
-                        <span class="tech-tag">Transformer</span>
-                        <span class="tech-tag">Ray Tune</span>
-                        <span class="tech-tag">Optuna</span>
-                        <span class="tech-tag">NLTK</span>
-                    </div>
-                    <div class="metrics">
-                        <ul>
-                            <li><strong>BLEU Score:</strong> 18.48 (exceeded baseline 18.32)</li>
-                            <li><strong>Training Efficiency:</strong> Reached optimal BLEU in 50 fewer epochs</li>
-                            <li><strong>Training Time:</strong> Cut from ~42 mins to ~21 mins</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <a href="https://github.com/vidhan-savaliya/MLOps-VidhanSavaliya-M25CSA031/tree/Assignment-4" class="btn">View Source</a>
-                </div>
-            </article>
+        <!-- Main Content -->
+        <main>
+            <div class="section-header animate">
+                <h2>Featured Assignments & Projects</h2>
+                <p>A systematic overview of my implementations, experiments, and research in Deep Learning operations.</p>
+            </div>
 
-            <!-- Assignment 3 -->
-            <article class="card animate delay-2">
-                <div class="card-header">
-                    <div class="card-title">
-                        <h3>DistilBERT Genre Classification</h3>
-                        <span class="badge">Assignment 3</span>
+            <div class="projects-list">
+                
+                <!-- Assignment 5 -->
+                <article class="card animate delay-1">
+                    <div class="card-main">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h3>ViT LoRA & Adversarial Attacks</h3>
+                            </div>
+                            <span class="badge">Assignment 5</span>
+                        </div>
+                        <p>A comprehensive study on fine-tuning Vision Transformers (ViT-S) using PEFT (LoRA) on CIFAR-100, alongside implementing powerful adversarial attacks (FGSM, PGD, BIM) using the IBM Adversarial Robustness Toolbox on ResNet-18.</p>
+                        
+                        <div class="card-footer">
+                            <a href="https://github.com/vidhan-savaliya/MLOps-VidhanSavaliya-M25CSA031/tree/Assignment-5" class="btn primary">View Source Code</a>
+                            <a href="https://wandb.ai/vidhan-savaliya-indian-institute-of-technology-jodhpur/dlops-ass5-q1/overview" class="btn" target="_blank">WandB Dashboard</a>
+                            <a href="https://huggingface.co/Vidhansavaliya123" class="btn" target="_blank">🤗 HuggingFace Models</a>
+                        </div>
                     </div>
-                </div>
-                <div class="card-body">
-                    <p>Fine-tuned DistilBERT to classify UCSD Book Graph reviews into 8 distinct genres. Features a fully Dockerized pipeline ready for production evaluation, prioritizing efficient inference speed.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">HuggingFace</span>
-                        <span class="tech-tag">DistilBERT</span>
-                        <span class="tech-tag">Docker</span>
-                        <span class="tech-tag">NLP</span>
+                    <div class="card-sidebar">
+                        <div class="metrics">
+                            <h4>Key Results & Metrics</h4>
+                            <ul>
+                                <li><strong>Best LoRA (r=4, α=4)</strong> 90.88% Acc (Baseline: 78.12%)</li>
+                                <li><strong>Clean ResNet-18</strong> 93.79% Acc on CIFAR-10</li>
+                                <li><strong>FGSM Attack (ε=0.03)</strong> Accuracy dropped to 49.34%</li>
+                                <li><strong>Adversarial Detectors</strong> ≥ 70% detection accuracy</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="metrics">
-                        <ul>
-                            <li><strong>Dataset:</strong> 6,400 Goodreads reviews</li>
-                            <li><strong>Accuracy:</strong> ~61.6% across 8 complex genres</li>
-                            <li><strong>F1 Score:</strong> ~61.5%</li>
-                            <li><strong>Efficiency:</strong> 60% faster inference than standard BERT</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <a href="https://github.com/vidhan-savaliya/MLOps-VidhanSavaliya-M25CSA031/tree/Assignment-3" class="btn">View Source</a>
-                    <a href="https://huggingface.co/Vidhansavaliya123/distilbert-goodreads-genres" class="btn btn-outline" target="_blank">🤗 Model Hub</a>
-                </div>
-            </article>
+                </article>
 
-            <!-- Assignment 1 -->
-            <article class="card animate delay-3">
-                <div class="card-header">
-                    <div class="card-title">
-                        <h3>Compute Analysis on ResNet</h3>
-                        <span class="badge">Assignment 1</span>
+                <!-- Assignment 4 -->
+                <article class="card animate delay-2">
+                    <div class="card-main">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h3>Neural Machine Translation</h3>
+                            </div>
+                            <span class="badge">Assignment 4</span>
+                        </div>
+                        <p>Optimizing an English to Hindi PyTorch Transformer model. Leveraged massive hyperparameter sweeps with Ray Tune and Optuna to significantly reduce training time while improving translation quality.</p>
+                        
+                        <div class="card-footer">
+                            <a href="https://github.com/vidhan-savaliya/MLOps-VidhanSavaliya-M25CSA031/tree/Assignment-4" class="btn primary">View Source Code</a>
+                        </div>
                     </div>
-                </div>
-                <div class="card-body">
-                    <p>A systematic experimental evaluation of 128 controlled runs on MNIST and FashionMNIST, comparing ResNet-18, ResNet-50, and classical Support Vector Machines across various optimizers and hardware settings.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">PyTorch</span>
-                        <span class="tech-tag">ResNet</span>
-                        <span class="tech-tag">SVM</span>
-                        <span class="tech-tag">Compute Profiling</span>
+                    <div class="card-sidebar">
+                        <div class="metrics">
+                            <h4>Key Results & Metrics</h4>
+                            <ul>
+                                <li><strong>BLEU Score Evaluation</strong> 18.48 (Exceeded 18.32 baseline)</li>
+                                <li><strong>Training Efficiency</strong> Optimal BLEU hit in 50 fewer epochs</li>
+                                <li><strong>Time Reduction</strong> Cut from ~42 mins down to ~21 mins</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="metrics">
-                        <ul>
-                            <li><strong>ResNet-18 (MNIST):</strong> 99.06% Peak Accuracy using SGD</li>
-                            <li><strong>ResNet-18 (FashionMNIST):</strong> 90.67% using Adam</li>
-                            <li><strong>Hardware Insights:</strong> GPU &gt;10x faster than CPU</li>
-                            <li><strong>Architecture:</strong> ResNet-18 matches/beats ResNet-50 on tiny datasets</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <a href="https://github.com/vidhan-savaliya/MLOps-VidhanSavaliya-M25CSA031/tree/Assignment-1" class="btn">View Source</a>
-                </div>
-            </article>
+                </article>
 
-            <!-- Lab 2 -->
-            <article class="card animate delay-2">
-                <div class="card-header">
-                    <div class="card-title">
-                        <h3>CIFAR-10 Base Model Evaluator</h3>
-                        <span class="badge">Lab 2 Worksheet</span>
+                <!-- Assignment 3 -->
+                <article class="card animate delay-3">
+                    <div class="card-main">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h3>DistilBERT Genre Classification</h3>
+                            </div>
+                            <span class="badge">Assignment 3</span>
+                        </div>
+                        <p>Fine-tuned DistilBERT to classify UCSD Book Graph reviews into 8 distinct genres. Features a fully Dockerized pipeline ready for production evaluation, prioritizing efficient inference speed.</p>
+                        
+                        <div class="card-footer">
+                            <a href="https://github.com/vidhan-savaliya/MLOps-VidhanSavaliya-M25CSA031/tree/Assignment-3" class="btn primary">View Source Code</a>
+                            <a href="https://huggingface.co/Vidhansavaliya123/distilbert-goodreads-genres" class="btn" target="_blank">🤗 HF Model Hub</a>
+                        </div>
                     </div>
-                </div>
-                <div class="card-body">
-                    <p>Implementation of ResNet18 adapted for 32x32 image inputs with highly rigorous data splitting (45k/5k/10k), augmentation strategies, FLOPs counting, and extensive WandB visualization logging.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">PyTorch</span>
-                        <span class="tech-tag">WandB</span>
-                        <span class="tech-tag">Data Augmentation</span>
+                    <div class="card-sidebar">
+                        <div class="metrics">
+                            <h4>Key Results & Metrics</h4>
+                            <ul>
+                                <li><strong>Dataset Utilized</strong> 6,400 Goodreads reviews</li>
+                                <li><strong>Classification Accuracy</strong> ~61.6% across 8 complex genres</li>
+                                <li><strong>Inference Efficiency</strong> 60% faster than standard BERT</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="metrics">
-                        <ul>
-                            <li><strong>Task:</strong> CIFAR-10 robust classification pipeline</li>
-                            <li><strong>Logging:</strong> Complete visualization of weights & gradients</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <a href="https://github.com/vidhan-savaliya/MLOps-VidhanSavaliya-M25CSA031/tree/Vidhan_M25CSA031_lab2_worksheet" class="btn">View Source</a>
-                    <a href="https://wandb.ai/savaliya-indian-institute-of-technology-jodhpur/cifar10-lab-assignment/runs/r2qi5d4j" class="btn btn-outline" target="_blank">WandB Run</a>
-                </div>
-            </article>
+                </article>
 
-        </div>
-    </main>
+                <!-- Assignment 1 -->
+                <article class="card animate delay-4">
+                    <div class="card-main">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h3>Compute Analysis on ResNet</h3>
+                            </div>
+                            <span class="badge">Assignment 1</span>
+                        </div>
+                        <p>A systematic experimental evaluation of 128 controlled runs on MNIST and FashionMNIST, comparing ResNet-18, ResNet-50, and classical Support Vector Machines across various optimizers and hardware settings.</p>
+                        
+                        <div class="card-footer">
+                            <a href="https://github.com/vidhan-savaliya/MLOps-VidhanSavaliya-M25CSA031/tree/Assignment-1" class="btn primary">View Source Code</a>
+                        </div>
+                    </div>
+                    <div class="card-sidebar">
+                        <div class="metrics">
+                            <h4>Key Results & Metrics</h4>
+                            <ul>
+                                <li><strong>ResNet-18 on MNIST</strong> 99.06% Peak Accuracy (using SGD)</li>
+                                <li><strong>ResNet-18 on FashionMNIST</strong> 90.67% Peak Accuracy (using Adam)</li>
+                                <li><strong>Hardware Analysis</strong> GPU observed >10x faster than CPU</li>
+                                <li><strong>Architecture Finding</strong> ResNet-18 matches/beats ResNet-50</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Vidhan Savaliya. All rights reserved.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Powered by Deep Learning & Modern Web Aesthetics.</p>
-        </div>
-    </footer>
+                <!-- Lab 2 -->
+                <article class="card animate delay-4">
+                    <div class="card-main">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h3>CIFAR-10 Base Model Evaluator</h3>
+                            </div>
+                            <span class="badge">Lab 2 Worksheet</span>
+                        </div>
+                        <p>Implementation of ResNet18 adapted for 32x32 image inputs with highly rigorous data splitting (45k/5k/10k), augmentation strategies, FLOPs counting, and extensive WandB visualization logging.</p>
+                        
+                        <div class="card-footer">
+                            <a href="https://github.com/vidhan-savaliya/MLOps-VidhanSavaliya-M25CSA031/tree/Vidhan_M25CSA031_lab2_worksheet" class="btn primary">View Source Code</a>
+                            <a href="https://wandb.ai/savaliya-indian-institute-of-technology-jodhpur/cifar10-lab-assignment/runs/r2qi5d4j" class="btn" target="_blank">WandB Run Logs</a>
+                        </div>
+                    </div>
+                    <div class="card-sidebar">
+                        <div class="metrics">
+                            <h4>Key Results & Metrics</h4>
+                            <ul>
+                                <li><strong>Target Objective</strong> CIFAR-10 robust classification pipeline</li>
+                                <li><strong>Visualization Output</strong> Complete logging of weights & gradients</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+    </div>
 
 </body>
 </html>
